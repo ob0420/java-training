@@ -1,52 +1,41 @@
 package com.vitelco.training;
 
-import com.vitelco.training.model.Point;
-import com.vitelco.training.model.Ractangle;
+import com.vitelco.training.model.Customer;
+import com.vitelco.training.model.Order;
+import com.vitelco.training.model.OrderItem;
+import com.vitelco.training.model.Sample;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.awt.*;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
+@Slf4j
 @SpringBootApplication
 public class FirstProjectApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(FirstProjectApplication.class, args);
 
-        Ractangle rectangle = new Ractangle();
+        /*Sample sample = new Sample("abc", "905545567867");
+        System.out.println(sample); */
+        Customer customer = new Customer(1, "Olya", "Babakulyyeva");
 
-        Point point1 = new Point();
-        point1.x = 10;
-        point1.y = 10;
 
-        Point point2 = new Point();
-        point2.x = 10;
-        point2.y = 40;
+        OrderItem itm1 = new OrderItem(1, "iphone", 1, 15000);
+        OrderItem itm2 = new OrderItem(2, "samsung", 2, 8000);
 
-        Point point3 = new Point();
-        point3.x = 50;
-        point3.y = 50;
+        Set items = new HashSet();
+        items.add(itm1);
+        items.add(itm2);
 
-        Point point4 = new Point();
-        point4.x = 110;
-        point4.y = 120;
+        Order order = new Order(1, customer, items);
 
-        rectangle.pointA = point1;
-        rectangle.pointB = point2;
-        rectangle.pointC = point3;
-        rectangle.pointD = point4;
+        log.info("musteri: {} - siparis: {}", customer, order);
 
-        System.out.println(rectangle);
-        //variable declaration
-        Point point; //instance of Point class, Class is object
-        String name;
-
-        //variable allocation
-        point = new Point();
-        point.x = 10;
-        point.y = 5;
-        name = "Olya";
 
     }
-
 }
